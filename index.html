@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Navya Shah · The NavyaVerse</title>
+    <meta name="description" content="Navya Shah's portfolio: a pixel-art world to scroll through. Data science student at NMIMS MPSTME Mumbai, event planner, poet, badminton player and dessert enthusiast." />
+    <meta name="theme-color" content="#2B1B4A" />
+    <meta property="og:title" content="Navya Shah · The NavyaVerse" />
+    <meta property="og:description" content="Scroll through my pixel world: Mumbai, London, the badminton court and my very pink study room." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#about">Skip to content</a>
+
+    <!-- ===== HUD ===== -->
+    <header class="hud" id="hud">
+      <a class="hud__logo" href="#home" aria-label="Back to the start">
+        <span class="hud__heart" aria-hidden="true">♥</span> NAVYA.EXE
+      </a>
+      <p class="hud__world" id="hud-world" aria-live="polite">HOME · MUMBAI</p>
+      <nav class="hud__nav" aria-label="Sections">
+        <a href="#home">Home</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hud__btn hud__menu" id="menu-open" type="button" aria-haspopup="dialog" aria-controls="pause-menu">☰ PAUSE</button>
+    </header>
+
+    <div class="pause" id="pause-menu" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
+      <div class="pause__box pbox">
+        <h2 id="pause-title" class="pause__title">PAUSED</h2>
+        <p class="pause__sub">Choose a world</p>
+        <ul class="pause__list">
+          <li><a href="#home">🏠 Home · Mumbai</a></li>
+          <li><a href="#hobbies">✈ World 1 · London</a></li>
+          <li><a href="#projects">🏸 World 2 · The Court</a></li>
+          <li><a href="#education">🎀 World 3 · Study Room</a></li>
+          <li><a href="#contact">✉ World 4 · Back Home</a></li>
+        </ul>
+        <button class="btn btn--ghost" id="menu-close" type="button">Resume ▶</button>
+      </div>
+    </div>
+
+    <div class="progress" aria-hidden="true">
+      <div class="progress__track"></div>
+      <div class="progress__plane" id="progress-plane">✈</div>
+    </div>
+
+    <main id="main">
+      <!-- ===== HOME ===== -->
+      <section id="home" class="world world--home" aria-labelledby="home-title" data-world="HOME · MUMBAI">
+        <div class="stage stage--home" data-scene="home">
+          <div class="hero">
+            <h1 id="home-title" class="hero__name">NAVYA <br />SHAH</h1>
+            <p class="hero__tag">Data scientist-in-training · event planner · part-time poet · full-time dessert enthusiast</p>
+            <p class="hero__start"><span class="blink">▼</span> SCROLL TO START <span class="blink">▼</span></p>
+          </div>
+
+          <button class="bubble" id="bubble" type="button" aria-haspopup="dialog" aria-controls="chat">
+            <span class="bubble__text" id="bubble-text">Hi, I'm Navya! ✿</span>
+          </button>
+
+          <div class="chat pbox" id="chat" role="dialog" aria-labelledby="chat-title" hidden>
+            <div class="chat__head">
+              <canvas class="portrait" data-portrait="home" width="26" height="30" aria-hidden="true"></canvas>
+              <div>
+                <p class="chat__name" id="chat-title">NAVYA <small>(AI version)</small></p>
+                <p class="chat__note">AI-Navya · trained on notes Navya wrote · may get things wrong</p>
+              </div>
+              <button class="chat__close" id="chat-close" type="button" aria-label="Close chat">✕</button>
+            </div>
+            <div class="chat__log" id="chat-log" aria-live="polite"></div>
+            <div class="chat__chips" id="chat-chips">
+              <button type="button">What do you study?</button>
+              <button type="button">Best dessert?</button>
+              <button type="button">Tell me about your events</button>
+              <button type="button">Where have you travelled?</button>
+              <button type="button">Read me a poem</button>
+              <button type="button">How do I reach you?</button>
+            </div>
+            <form class="chat__form" id="chat-form">
+              <label class="sr-only" for="chat-input">Ask Navya a question</label>
+              <input id="chat-input" name="q" type="text" maxlength="300" autocomplete="off" placeholder="Ask Navya anything…" />
+              <button class="btn btn--send" type="submit" aria-label="Send">▶</button>
+            </form>
+            <button class="chat__reset" id="chat-reset" type="button">↺ new chat</button>
+          </div>
+        </div>
+
+        <div class="cards cards--home" id="about">
+          <article class="profile pbox">
+            <div class="profile__portrait">
+              <canvas class="portrait portrait--big" data-portrait="home" width="26" height="30" aria-hidden="true"></canvas>
+              <p class="profile__label">PLAYER 1</p>
+            </div>
+            <div class="profile__body">
+              <h2 class="section-title">Player Profile</h2>
+              <dl class="profile__sheet">
+                <div><dt>Name</dt><dd>Navya Shah</dd></div>
+                <div><dt>Class</dt><dd>Data Scientist · Level 5 of 6</dd></div>
+                <div><dt>Guild</dt><dd>SVKM's NMIMS MPSTME, Mumbai</dd></div>
+                <div><dt>Home base</dt><dd>Mumbai 🌊</dd></div>
+                <div><dt>Main quest</dt><dd>Make my business take off so it can fund my expensive lifestyle 💅</dd></div>
+                <div><dt>Side quests</dt><dd>event planning · poetry · badminton · café-hopping · travel</dd></div>
+                <div><dt>Special move</dt><dd>Turning total chaos into a run-of-show</dd></div>
+                <div><dt>Weakness</dt><dd>Anything with chocolate in it</dd></div>
+              </dl>
+              <ul class="stats" aria-label="Personality stats, just for fun">
+                <li><span>Curiosity</span><i style="--v: 100%"></i></li>
+                <li><span>Creativity</span><i style="--v: 90%"></i></li>
+                <li><span>Smash power</span><i style="--v: 85%"></i></li>
+                <li><span>Planning</span><i style="--v: 100%"></i></li>
+                <li class="stats__overflow"><span>Sweet tooth</span><i style="--v: 140%"></i><b>∞</b></li>
+              </ul>
+            </div>
+          </article>
+          <article class="about pbox">
+            <h2 class="section-title">About me</h2>
+            <p>Hey! I'm Navya, a fifth-year (of six!) Integrated B.Tech Data Science student at SVKM's NMIMS MPSTME in Mumbai. By day I'm cleaning datasets and turning messy numbers into stories that make sense. By evening I'm probably on a badminton court, planning my next event, or hunting down a café with a chocolate dessert worth the detour.</p>
+            <p>What ties it all together? I love making things that bring people together, whether that's a model that finds the pattern or an event that fills the room.</p>
+            <p class="about__hint">This little world is me in pixels. Scroll to travel through it, or say hi to me up there in the speech bubble ✿</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== FLIGHT: Mumbai → London ===== -->
+      <section id="flight" class="transit" aria-label="Flight from Mumbai to London">
+        <div class="stage" data-scene="flight" data-pin="200" data-pin-mobile="140">
+          <div class="pass pbox" id="pass">
+            <div class="pass__top"><span>NAVYA AIR ✈</span><span>BOARDING PASS</span></div>
+            <div class="pass__grid">
+              <div><small>Passenger</small><b>YOU (VISITOR)</b></div>
+              <div><small>Flight</small><b>NV-005</b></div>
+              <div class="pass__route"><small>From</small><b>BOM</b><em>Mumbai</em></div>
+              <div class="pass__plane" aria-hidden="true">✈</div>
+              <div class="pass__route"><small>To</small><b>LHR</b><em>London</em></div>
+              <div><small>Gate</small><b>H (Hobbies)</b></div>
+              <div><small>Seat</small><b>5A · window</b></div>
+              <div class="pass__meal"><small>In-flight meal</small><b>dessert, obviously</b></div>
+            </div>
+            <div class="pass__stamp" id="pass-stamp" aria-hidden="true">BOARDED ✓</div>
+          </div>
+          <p class="caption" id="flight-caption">Now cruising at 35,000 ft. In-flight snack: still dessert.</p>
+        </div>
+      </section>
+
+      <!-- ===== WORLD 1: LONDON ===== -->
+      <section id="hobbies" class="world world--london" aria-labelledby="hobbies-title" data-world="WORLD 1 · LONDON">
+        <div class="stage" data-scene="london" data-pin="120" data-pin-mobile="80">
+          <div class="worldcard" aria-hidden="true">
+            <p class="worldcard__num">WORLD 1</p>
+            <p class="worldcard__name">L O N D O N</p>
+            <p class="worldcard__sub">hobbies &amp; interests</p>
+          </div>
+          <div class="hotspots" aria-label="Things to click in London">
+            <button class="hotspot" style="--x: var(--hs-suitcase-x); --y: var(--hs-suitcase-y)" data-say="suitcase" aria-label="Suitcase: travel">🧳</button>
+            <button class="hotspot" style="--x: var(--hs-boutique-x); --y: var(--hs-boutique-y)" data-say="boutique" aria-label="Boutique: fashion">👗</button>
+            <button class="hotspot" style="--x: var(--hs-cafe-x); --y: var(--hs-cafe-y)" data-say="cafe" aria-label="Café: food and desserts">☕</button>
+            <button class="hotspot" style="--x: var(--hs-booth-x); --y: var(--hs-booth-y)" data-say="booth" aria-label="Phone booth: music">☎</button>
+            <button class="hotspot" style="--x: var(--hs-quill-x); --y: var(--hs-quill-y)" data-say="quill" aria-label="Quill: poetry">🪶</button>
+            <button class="hotspot" style="--x: var(--hs-navya-x); --y: var(--hs-navya-y)" data-say="umbrella" aria-label="Navya: open the umbrella">☂</button>
+            <button class="hotspot" style="--x: var(--hs-guard-x); --y: var(--hs-guard-y)" data-say="guard" aria-label="Queen's Guard">💂</button>
+            <button class="hotspot" style="--x: var(--hs-bigben-x); --y: var(--hs-bigben-y)" data-say="bigben" aria-label="Big Ben: London time">🕰</button>
+          </div>
+        </div>
+
+        <div class="cards cards--london">
+          <header class="cards__intro">
+            <h2 class="section-title" id="hobbies-title">World 1 · London: Side Quests</h2>
+            <p>Every city I visit turns into its own little level: new streets, new cafés, new outfits to plan. This one's London, but these hobbies travel with me everywhere.</p>
+          </header>
+
+          <article class="card pbox" id="card-travel">
+            <h3>✈ Travelling <small>Passport</small></h3>
+            <p>Wanderlust is basically my default setting. I love the planning almost as much as the going: the itinerary, the playlist for the flight, and that first walk around a new city with no map. Six countries stamped so far, and I come home with more stories than souvenirs.</p>
+            <div class="passport" aria-label="Countries visited">
+              <span class="stamp" style="--r: -6deg; --c: #D62828">SOUTH AFRICA</span>
+              <span class="stamp" style="--r: 4deg; --c: #2F6A82">AUSTRALIA</span>
+              <span class="stamp" style="--r: -2deg; --c: #2B3A67">USA</span>
+              <span class="stamp" style="--r: 7deg; --c: #3E7C59">VIETNAM</span>
+              <span class="stamp" style="--r: -5deg; --c: #B5487A">UAE</span>
+              <span class="stamp" style="--r: 3deg; --c: #8B1E1E">UK</span>
+              <span class="stamp stamp--next" style="--r: -3deg">NEXT: ???</span>
+            </div>
+          </article>
+
+          <article class="card pbox" id="card-fashion">
+            <h3>👗 Fashion <small>The Fitting Room</small></h3>
+            <p>I genuinely love dressing up. An outfit is the first thing you say before you've said anything, so I plan mine the way I plan events: a theme, a mood, and one statement piece doing the heavy lifting.</p>
+            <div class="mirror">
+              <button class="btn btn--icon" type="button" id="outfit-prev" aria-label="Previous outfit">◀</button>
+              <div class="mirror__glass">
+                <canvas id="outfit-canvas" width="34" height="60" aria-hidden="true"></canvas>
+                <p class="mirror__name" id="outfit-name" aria-live="polite">Denim day</p>
+              </div>
+              <button class="btn btn--icon" type="button" id="outfit-next" aria-label="Next outfit">▶</button>
+            </div>
+          </article>
+
+          <article class="card pbox" id="card-cafes">
+            <h3>☕ Cafés &amp; Food <small>The Sweet Spot</small></h3>
+            <p>My ideal afternoon: a café I've never been to, a window seat, and someone to split dessert with. I keep a running list of places to try, and yes, I have opinions about every dessert I've ever met.</p>
+            <div class="chalk">
+              <p class="chalk__title">Navya-approved in Mumbai</p>
+              <ul>
+                <li><span>Chantilly</span><span>✿✿✿</span></li>
+                <li><span>Bougee Cafe</span><span>✿✿✿</span></li>
+                <li><span>Benne Dosa</span><span>✿✿✿</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card pbox" id="card-desserts">
+            <h3>🍫 Desserts <small>Hall of Fame</small></h3>
+            <p>I have a sweet tooth that refuses to be talked down, and it has a very clear type: chocolate. These are my official rankings, and I will defend them.</p>
+            <ol class="podium">
+              <li class="podium__2"><canvas data-icon="chocbar" width="16" height="16" aria-hidden="true"></canvas><b>2</b><span>Chocolate anything</span></li>
+              <li class="podium__1"><canvas data-icon="berry" width="16" height="16" aria-hidden="true"></canvas><b>1</b><span>Strawberries &amp; chocolate</span></li>
+              <li class="podium__3"><canvas data-icon="cake" width="16" height="16" aria-hidden="true"></canvas><b>3</b><span>…also chocolate</span></li>
+            </ol>
+          </article>
+
+          <article class="card pbox" id="card-music">
+            <h3>🎧 Music <small>Navya's Travel Mix</small></h3>
+            <p>There's a song for every mood and a playlist for every trip. Music is the background score for my studying, my travelling and my writing.</p>
+            <div class="cassette" aria-label="Mixtape track list">
+              <div class="cassette__label">NAVYA'S MIX ♡</div>
+              <div class="cassette__reels" aria-hidden="true"><i></i><i></i></div>
+              <ol class="cassette__list">
+                <li><b>Side A</b> Anything by Arijit Singh</li>
+                <li><b>Side B</b> Can't Help Falling in Love · Elvis Presley <em>(on repeat)</em></li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="card pbox" id="card-poetry">
+            <h3>🪶 Poetry <small>The Poet's Corner</small></h3>
+            <p>I write poetry when a feeling gets too big for a caption, mostly about places, people, and the small moments you only notice when you slow down.</p>
+            <p class="card__cta">Keep scrolling. I left one of mine for you <span class="blink">↓</span></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== PARCHMENT POEM ===== -->
+      <section id="poem" class="parchment-section" aria-labelledby="poem-title">
+        <div class="parchment-stage">
+          <div class="scroll" id="scroll">
+            <div class="scroll__rod scroll__rod--top" aria-hidden="true"></div>
+            <div class="scroll__paper" id="scroll-paper">
+              <div class="scroll__inner">
+                <h2 class="poem__title" id="poem-title"><span class="ink">Wanderlust</span></h2>
+                <div class="poem" id="poem-lines">
+                  <p><span class="ink">Wanderlust whispers, the journey’s near,</span></p>
+                  <p><span class="ink">pack your bags, no doubt, no fear.</span></p>
+                  <p><span class="ink">through alpine mountains and breezy beaches,</span></p>
+                  <p><span class="ink">every journey has something it preaches.</span></p>
+                  <p><span class="ink">The world unfolds, in endless grace,</span></p>
+                  <p><span class="ink">You make new friends, in every place</span></p>
+                  <p><span class="ink">The thoughts you hide, the pain you hold,</span></p>
+                  <p><span class="ink">Will fade in the stories the world has told.</span></p>
+                  <p><span class="ink">With every step, new sights to see,</span></p>
+                  <p><span class="ink">Traveling sets the spirit free.</span></p>
+                </div>
+                <p class="poem__sign"><span class="ink">— Navya</span></p>
+                <div class="seal" id="seal" aria-hidden="true">N</div>
+              </div>
+            </div>
+            <div class="scroll__rod scroll__rod--bottom" id="rod-bottom" aria-hidden="true"></div>
+            <div class="quill" id="quill" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SMASH: London → Court ===== -->
+      <section id="smash" class="transit" aria-label="A shuttlecock smash into the badminton court">
+        <div class="stage" data-scene="smash" data-pin="110" data-pin-mobile="90">
+          <p class="burst" id="burst" aria-hidden="true">SMASH!</p>
+        </div>
+      </section>
+
+      <!-- ===== WORLD 2: THE COURT ===== -->
+      <section id="projects" class="world world--court" aria-labelledby="projects-title" data-world="WORLD 2 · THE COURT">
+        <div class="stage" data-scene="court" data-pin="110" data-pin-mobile="80">
+          <div class="worldcard" aria-hidden="true">
+            <p class="worldcard__num">WORLD 2</p>
+            <p class="worldcard__name">T H E &nbsp; C O U R T</p>
+            <p class="worldcard__sub">projects &amp; work</p>
+          </div>
+          <div class="scoreboard" aria-label="Scoreboard: Navya 21, Deadlines 19">
+            <span>NAVYA</span><b id="score-a">14</b><i>:</i><b id="score-b">13</b><span>DEADLINES</span>
+          </div>
+        </div>
+
+        <div class="cards cards--court">
+          <header class="cards__intro">
+            <h2 class="section-title" id="projects-title">World 2 · The Court: Projects &amp; Work</h2>
+            <p>Badminton taught me how I like to work: stay light on your feet, read the play early, and never give up on a shuttle that looks lost. These are the rallies I'm proudest of.</p>
+          </header>
+
+          <h3 class="subhead">🏸 Match Highlights <small>projects</small></h3>
+          <div class="rallies">
+            <article class="rally pbox">
+              <p class="rally__head"><span>RALLY 01 · 2025</span><span class="rally__won">WON ✓</span></p>
+              <h4>Streaming Platform Engagement &amp; Churn Simulator</h4>
+              <p>How do people drift from "just browsing" to bingeing, subscribing, or leaving? I modelled Netflix-style user behaviour as a 6-state Markov chain (Visitor → Binge → Subscriber → Churn), found its steady state with power iteration and checked it was ergodic.</p>
+              <p>Then I ran a Monte Carlo simulation (1,000 users × 50 steps, with optional Poisson arrivals) that landed on a simulated <b>31% free-to-paid conversion rate</b>, and put it all in a 5-page Streamlit dashboard with live sensitivity analysis, transition heatmaps and funnel metrics.</p>
+              <p class="tags"><span>Python</span><span>NumPy</span><span>Pandas</span><span>Streamlit</span><span>Plotly</span><span>Markov chains</span></p>
+              <a class="btn btn--small" href="https://github.com/Navyashah1804/streaming-platform-simulator" target="_blank" rel="noopener">▶ View code</a>
+            </article>
+            <article class="rally pbox">
+              <p class="rally__head"><span>RALLY 02 · 2025</span><span class="rally__won">WON ✓</span></p>
+              <h4>Bitcoin Fear &amp; Greed: Sentiment vs. Profitability</h4>
+              <p>Does "buy fear, sell greed" actually work? I tested it on <b>200,000+ real trades from 32 traders</b> with two regression models: trade PnL against the Fear &amp; Greed index and trade side, and next-day BTC returns against the index.</p>
+              <p>The verdict: statistically significant evidence that fear favours buyers at the trade level, but only a weak signal at the daily price level. Visualised across a 5-page Streamlit dashboard.</p>
+              <p class="tags"><span>Python</span><span>Pandas</span><span>scikit-learn</span><span>Linear regression</span><span>Streamlit</span></p>
+              <a class="btn btn--small" href="https://github.com/Navyashah1804/bitcoin_ssdi" target="_blank" rel="noopener">▶ View code</a>
+            </article>
+            <article class="rally pbox">
+              <p class="rally__head"><span>RALLY 03 · JAN 2026</span><span class="rally__won">BUILT ✓</span></p>
+              <h4>EduX · OpenAI × NxtWave Buildathon</h4>
+              <p>At the state-level OpenAI × NxtWave Buildathon, our team built EduX, an AI-powered smart study companion. I did most of the front-end work, so the part you'd actually click on was largely mine. (Very on-brand for someone who lives for academic validation.)</p>
+              <p>I also competed in the India Innovates Hackathon in March 2026.</p>
+              <p class="tags"><span>Front-end</span><span>AI</span><span>Hackathon</span><span>Teamwork</span></p>
+            </article>
+            <article class="rally pbox">
+              <p class="rally__head"><span>RALLY 04 · 2026</span><span class="rally__won">LIVE ✓</span></p>
+              <h4>The NavyaVerse (this website)</h4>
+              <p>A scroll-driven pixel world with an AI version of me living in it. I planned every scene and wrote every word, from Marine Drive to the study room. Built with HTML, CSS, JavaScript, Canvas and GSAP, plus a Gemini-powered chat that answers in my voice.</p>
+              <p class="tags"><span>JavaScript</span><span>Canvas</span><span>GSAP</span><span>Gemini API</span></p>
+            </article>
+            <article class="rally pbox">
+              <p class="rally__head"><span>RALLY 05</span><span class="rally__won">WRITTEN ✓</span></p>
+              <h4>“Wanderlust” · a poem</h4>
+              <p>A poem about why I travel, and the way new places quietly fix old feelings. It lives on a parchment scroll that unrolls in this site's London world.</p>
+              <p class="tags"><span>Creative writing</span><span>Poetry</span></p>
+              <a class="btn btn--small" href="#poem">▶ Read it</a>
+            </article>
+          </div>
+
+          <h3 class="subhead">🎽 Training Camps <small>experience</small></h3>
+          <div class="rallies">
+            <article class="rally pbox">
+              <p class="rally__head"><span>JUNE 2026 →</span><span class="rally__won">IN PLAY</span></p>
+              <h4>AI &amp; Data Science Intern · RuVision Thinking Labs</h4>
+              <p>Working on AI and data science problems in a real team, where the datasets are messier and the questions matter more than in any assignment.</p>
+              <p class="tags"><span>AI</span><span>Data science</span></p>
+            </article>
+            <article class="rally pbox">
+              <p class="rally__head"><span>JUNE 2025</span><span class="rally__won">DONE ✓</span></p>
+              <h4>Cyber Security Intern · Synoptics Technologies</h4>
+              <p>A summer on the defensive side of tech, learning how a Security Operations Centre (SOC) works: how threats get spotted, triaged and handled.</p>
+              <p class="tags"><span>Cyber security</span><span>SOC</span></p>
+            </article>
+          </div>
+
+          <h3 class="subhead">🏆 Tournament Circuit <small>leadership &amp; clubs</small></h3>
+          <div class="trophies">
+            <details class="trophy pbox" open>
+              <summary><span class="trophy__icon" aria-hidden="true">🌍</span><span><b>Head of Artist &amp; Guest Management</b> · Social Conclave · 2025–26</span></summary>
+              <p>Social Conclave is an MUN-style conference about social causes, where students debate real issues and work toward real solutions. I led the team that brought in and looked after our guests, coordinating with C-suite executives and industry leaders across outreach and hospitality.</p>
+              <p class="tags"><span>Leadership</span><span>Executive outreach</span><span>Hospitality</span></p>
+            </details>
+            <details class="trophy pbox" open>
+              <summary><span class="trophy__icon" aria-hidden="true">🎤</span><span><b>Sub-Head, Artist &amp; Guest Management</b> · IETE-SF</span></summary>
+              <p>I planned tech and industry-connect events for students: reaching out to speakers, coordinating their visits, and making sure every guest felt looked after from the first email to the final thank-you.</p>
+              <p class="tags"><span>Speaker outreach</span><span>Guest relations</span><span>Communication</span></p>
+            </details>
+            <details class="trophy pbox" open>
+              <summary><span class="trophy__icon" aria-hidden="true">🏆</span><span><b>Executive</b> · Sports Committee, NMIMS MPSTME</span></summary>
+              <p>I helped organise college sports events from the ground up: fixtures, venues, schedules, volunteers, and the classic early-morning "who has the shuttlecocks?" panic. It taught me that a good event is 90% planning and 10% staying calm when the plan changes.</p>
+              <p class="tags"><span>Event operations</span><span>Scheduling</span><span>Teamwork</span></p>
+            </details>
+          </div>
+
+          <h3 class="subhead">🎒 Kit Bag <small>skills</small></h3>
+          <ul class="kit">
+            <li class="kit__item"><b>Py</b><span>Python</span><em>My main racket.</em></li>
+            <li class="kit__item"><b>SQL</b><span>SQL · MySQL</span><em>For asking data the right questions.</em></li>
+            <li class="kit__item"><b>JS</b><span>JavaScript · HTML · CSS</span><em>How this whole world got built.</em></li>
+            <li class="kit__item"><b>C++</b><span>C · C++ · DSA</span><em>Trees, graphs, sorting: the fundamentals drill.</em></li>
+            <li class="kit__item"><b>pd</b><span>Pandas · NumPy · SciPy</span><em>Data cleaning &amp; ETL, my zen garden.</em></li>
+            <li class="kit__item"><b>ML</b><span>scikit-learn · Regression</span><em>Teaching computers to spot patterns.</em></li>
+            <li class="kit__item"><b>σ</b><span>Probability &amp; Statistics</span><em>t-tests, z-tests, chi-square: the rules of the game.</em></li>
+            <li class="kit__item"><b>MC</b><span>Markov Chains · Monte Carlo</span><em>Simulating 1,000 futures before breakfast.</em></li>
+            <li class="kit__item"><b>▥</b><span>Matplotlib · Seaborn · Plotly</span><em>If it can't be shown, it can't be shared.</em></li>
+            <li class="kit__item"><b>BI</b><span>Power BI · Tableau</span><em>Dashboards people actually open.</em></li>
+            <li class="kit__item"><b>St</b><span>Streamlit · Flask</span><em>Turning notebooks into apps.</em></li>
+            <li class="kit__item"><b>git</b><span>Git &amp; GitHub · Jupyter · VS Code</span><em>Where the rallies get practised.</em></li>
+            <li class="kit__item kit__item--legend"><b>★</b><span>Event Planning</span><em>LEGENDARY ITEM. Turns chaos into a run-of-show.</em></li>
+            <li class="kit__item"><b>♥</b><span>Artist &amp; Guest Management</span><em>Every guest leaves feeling looked after.</em></li>
+            <li class="kit__item"><b>⚑</b><span>Leadership &amp; Teamwork</span><em>Captain energy, team-player heart.</em></li>
+            <li class="kit__item"><b>✎</b><span>Creative Writing</span><em>Poems, captions, speeches, this website.</em></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== PAPER PLANE: Court → Study ===== -->
+      <section id="paperplane" class="transit" aria-label="A paper plane glides to the study room">
+        <div class="stage" data-scene="paperplane" data-pin="100" data-pin-mobile="80"></div>
+      </section>
+
+      <!-- ===== WORLD 3: STUDY ROOM ===== -->
+      <section id="education" class="world world--study" aria-labelledby="education-title" data-world="WORLD 3 · STUDY ROOM ♡">
+        <div class="stage" data-scene="study" data-pin="100" data-pin-mobile="70">
+          <div class="worldcard worldcard--pink" aria-hidden="true">
+            <p class="worldcard__num">WORLD 3</p>
+            <p class="worldcard__name">S T U D Y &nbsp; R O O M ♡</p>
+            <p class="worldcard__sub">education</p>
+          </div>
+          <button class="hotspot hotspot--cat" style="--x: var(--cat-x); --y: var(--cat-y)" data-say="cat" aria-label="The cat">🐱</button>
+        </div>
+
+        <div class="cards cards--study">
+          <header class="cards__intro">
+            <h2 class="section-title" id="education-title">World 3 · The Study Room ♡</h2>
+            <p class="sticker sticker--hot">hot girls study data science 💅</p>
+          </header>
+
+          <div class="study-grid">
+            <aside class="note">
+              <p><b>Confession:</b> I'm a total sucker for academic validation. A gold star, a "great work!" on an assignment, a professor remembering my name: I'll be thinking about it for a week. ✧</p>
+            </aside>
+
+            <div class="meter pbox" id="meter">
+              <p class="meter__label">ACADEMIC VALIDATION</p>
+              <div class="meter__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40" id="meter-bar"><i style="--v: 40%"></i></div>
+              <p class="meter__text" id="meter-text">40%: needs 6 more "great job!"s</p>
+            </div>
+
+            <article class="report pbox">
+              <p class="report__ribbon" aria-hidden="true">🎀</p>
+              <h3>Report Card</h3>
+              <p class="report__degree">B.Tech (Integrated) in Data Science</p>
+              <p>SVKM's NMIMS Mukesh Patel School of Technology Management &amp; Engineering (MPSTME), Mumbai</p>
+              <dl class="report__rows">
+                <div><dt>Years</dt><dd>2022 – 2028</dd></div>
+                <div><dt>Currently</dt><dd>Year 5 of 6 ✧</dd></div>
+                <div><dt>CGPA</dt><dd>3.7 / 4 ⭐</dd></div>
+              </dl>
+            </article>
+
+            <article class="shelf pbox">
+              <h3>Bookshelf <small>favourite coursework</small></h3>
+              <ul class="books">
+                <li style="--c: #ff8fc7">Stochastic Processes &amp; Applications</li>
+                <li style="--c: #a2d2ff">Statistical Structures in Data &amp; Inference</li>
+                <li style="--c: #cdb4db">Managing Uncertainty</li>
+                <li style="--c: #ffd166">Data Wrangling</li>
+                <li style="--c: #b8f2e6">Data Structures &amp; Algorithms</li>
+                <li style="--c: #f7864e">Optimization Methods</li>
+                <li style="--c: #ffb3d1">DBMS</li>
+                <li style="--c: #a2d2ff">Data Handling &amp; Visualization</li>
+                <li style="--c: #cdb4db">HTML &amp; CSS</li>
+              </ul>
+            </article>
+
+            <article class="levels pbox">
+              <h3>Level Path</h3>
+              <ol class="path">
+                <li class="done"><b>Lv.1</b><span>2022–23</span></li>
+                <li class="done"><b>Lv.2</b><span>2023–24</span></li>
+                <li class="done"><b>Lv.3</b><span>2024–25</span></li>
+                <li class="done"><b>Lv.4</b><span>2025–26</span></li>
+                <li class="here"><b>Lv.5</b><span>2026–27</span><em>YOU ARE HERE ♡</em></li>
+                <li><b>Lv.6</b><span>2027–28</span></li>
+                <li class="locked"><b>🏆</b><span>Graduation</span><em>unlocks 2028 🔒</em></li>
+              </ol>
+            </article>
+
+            <article class="stars pbox">
+              <h3>Gold Star Wall</h3>
+              <ul class="stars__wall">
+                <li><span class="gold" aria-hidden="true">★</span>CGPA 3.7 / 4</li>
+                <li class="stars__trophies"><span class="gold" aria-hidden="true">★</span>A whole shelf of badminton trophies
+                  <span class="trophy-row" aria-hidden="true"><canvas data-icon="trophy" width="11" height="13"></canvas><canvas data-icon="trophy" width="11" height="13"></canvas><canvas data-icon="trophy" width="11" height="13"></canvas><canvas data-icon="trophy" width="11" height="13"></canvas><canvas data-icon="trophy" width="11" height="13"></canvas><canvas data-icon="trophy" width="11" height="13"></canvas></span>
+                </li>
+                <li><span class="gold" aria-hidden="true">★</span>OpenAI × NxtWave Buildathon (state level): built EduX</li>
+                <li><span class="gold" aria-hidden="true">★</span>India Innovates Hackathon</li>
+                <li><span class="gold" aria-hidden="true">★</span>Executive, Sports Committee</li>
+                <li><span class="gold" aria-hidden="true">★</span>Sub-Head, Artist &amp; Guest Management, IETE-SF</li>
+                <li><span class="gold" aria-hidden="true">★</span>Head of Artist &amp; Guest Management, Social Conclave</li>
+              </ul>
+            </article>
+
+            <article class="todo pbox">
+              <h3>Today ♡</h3>
+              <ul class="todo__list" id="todo">
+                <li><label><input type="checkbox" /><span>survive the 8 a.m. lecture</span></label></li>
+                <li><label><input type="checkbox" /><span>finish the ML assignment</span></label></li>
+                <li><label><input type="checkbox" /><span>revise statistics (again)</span></label></li>
+                <li><label><input type="checkbox" /><span>write one stanza</span></label></li>
+                <li><label><input type="checkbox" /><span>badminton at 6</span></label></li>
+                <li><label><input type="checkbox" /><span>reward self with chocolate</span></label></li>
+              </ul>
+              <p class="todo__hint">Tick them all. Go on, validate me.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== WORLD 4: CONTACT ===== -->
+      <section id="contact" class="world world--night" aria-labelledby="contact-title" data-world="WORLD 4 · BACK HOME">
+        <div class="stage" data-scene="contact" data-pin="100" data-pin-mobile="80">
+          <div class="worldcard worldcard--late" aria-hidden="true">
+            <p class="worldcard__num">WORLD 4</p>
+            <p class="worldcard__name">B A C K &nbsp; H O M E</p>
+            <p class="worldcard__sub">contact</p>
+          </div>
+        </div>
+
+        <div class="cards cards--night">
+          <article class="letter pbox">
+            <h2 class="section-title" id="contact-title">Send me a letter ✉</h2>
+            <p>Whether it's a data project, an event you're planning, a café I <em>have</em> to try, or a poem you liked, my inbox is open. Drop me a letter. ✿</p>
+            <div class="stamps">
+              <a class="pstamp" href="mailto:123navyashah@gmail.com"><span aria-hidden="true">✉</span><b>Email</b><small>123navyashah@gmail.com</small></a>
+              <a class="pstamp pstamp--blue" href="https://www.linkedin.com/in/navya-shah-374bb9285/" target="_blank" rel="noopener"><span aria-hidden="true">in</span><b>LinkedIn</b><small>navya-shah</small></a>
+              <a class="pstamp pstamp--mint" href="https://github.com/Navyashah1804" target="_blank" rel="noopener"><span aria-hidden="true">&lt;/&gt;</span><b>GitHub</b><small>Navyashah1804</small></a>
+            </div>
+            <button class="btn btn--small" type="button" id="copy-email" data-email="123navyashah@gmail.com">⧉ Copy my email</button>
+          </article>
+
+          <div class="credits" aria-labelledby="credits-title">
+            <p class="credits__title" id="credits-title">★ THANKS FOR PLAYING ★</p>
+            <dl class="credits__list">
+              <div><dt>Starring</dt><dd>Navya Shah</dd></div>
+              <div><dt>Written by</dt><dd>Navya Shah</dd></div>
+              <div><dt>“Wanderlust” (poem)</dt><dd>Navya Shah</dd></div>
+              <div><dt>Pixel art</dt><dd>drawn in code, for this site</dd></div>
+              <div><dt>Built with</dt><dd>HTML · CSS · JavaScript · Canvas · GSAP · Gemini</dd></div>
+              <div><dt>Fuelled by</dt><dd>strawberries &amp; chocolate</dd></div>
+            </dl>
+            <p class="credits__continue">CONTINUE?</p>
+            <div class="credits__choice">
+              <button class="btn" type="button" id="continue-yes">▶ YES</button>
+              <button class="btn btn--ghost" type="button" id="continue-no">NO</button>
+            </div>
+            <p class="credits__copy">© 2026 Navya Shah</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- RPG dialog box used by hotspots -->
+    <div class="dialog pbox" id="dialog" role="status" aria-live="polite" hidden>
+      <canvas class="portrait" id="dialog-portrait" width="26" height="30" aria-hidden="true"></canvas>
+      <div class="dialog__body">
+        <p class="dialog__name">NAVYA</p>
+        <p class="dialog__text" id="dialog-text"></p>
+      </div>
+      <button class="dialog__close" id="dialog-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <noscript><p class="noscript">This pixel world needs JavaScript to move, but everything is still readable below. ✿</p></noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

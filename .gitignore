@@ -1,0 +1,16 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+.vercel
+.DS_Store
+*.local
+
+# personal files that must never be public (resume has a phone number)
+*.docx
+*.pdf
+PLAN.md
+
+# local tooling
+.claude/
