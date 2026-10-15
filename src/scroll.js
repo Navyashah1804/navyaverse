@@ -114,7 +114,7 @@ export function setupScroll(stages, { reduced }) {
     e.preventDefault();
     if (id === 'poem' && poemTrigger) scrollToTarget(poemTrigger.end - 2);
     else scrollToTarget(el);
-    history.replaceState(null, '', `#${id}`);
+    try { history.replaceState(null, '', `#${id}`); } catch { /* sandboxed frames may refuse */ }
   });
 
   if (!reduced) {
