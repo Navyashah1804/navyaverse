@@ -4,8 +4,6 @@ Navya Shah's personal portfolio: a scroll-through pixel-art world in the style o
 
 You start on **Marine Drive, Mumbai at sunset**, board a Navya Air flight to **London** (hobbies and interests), watch a poem unroll on a parchment scroll, follow a shuttlecock smash onto **the badminton court** (projects, internships, clubs, skills), fly a paper plane into a very pink **study room** (education), and end back home on **Marine Drive at night** (contact). There's also a speech bubble above Navya's head: click it to chat with **AI-Navya**, who answers in her voice.
 
-**Live site:** _add the Vercel URL here after deploying_
-
 ## Built with
 
 - HTML, CSS and vanilla JavaScript (ES modules), bundled with [Vite](https://vitejs.dev)
