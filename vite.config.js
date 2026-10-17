@@ -27,14 +27,17 @@ export default defineConfig(({ mode }) => {
           // dev-only: lets /scenes.html?og=1 save the generated link-preview images into public/
           server.middlewares.use('/__dev/save', async (req, res) => {
             const name = new URL(req.url, 'http://x').searchParams.get('name');
-            if (req.method !== 'POST' || !['og-image.png', 'favicon.png'].includes(name)) {
+            const isShot = /^screen-[a-z]+\.png$/.test(name || '');
+            if (req.method !== 'POST' || !(isShot || ['og-image.png', 'favicon.png'].includes(name))) {
               res.statusCode = 400;
               return res.end();
             }
             let body = '';
             for await (const chunk of req) body += chunk;
-            const { writeFile } = await import('node:fs/promises');
-            await writeFile(resolve(import.meta.dirname, 'public', name), Buffer.from(body.split(',')[1], 'base64'));
+            const { writeFile, mkdir } = await import('node:fs/promises');
+            const dir = resolve(import.meta.dirname, isShot ? 'docs' : 'public');
+            await mkdir(dir, { recursive: true });
+            await writeFile(resolve(dir, name), Buffer.from(body.split(',')[1], 'base64'));
             res.end('saved');
           });
         },

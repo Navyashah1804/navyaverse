@@ -212,7 +212,9 @@ button { font: inherit; color: inherit; }
 .chat__chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chat__chips button { background: var(--paper); border: 2px solid var(--ink); padding: 4px 8px; font-size: 14px; cursor: pointer; }
 .chat__chips button:hover { background: var(--gold); }
-.chat__form { display: flex; gap: 8px; }
+.chat__label { margin: 0; font-family: var(--pixel); font-size: 8px; color: #6a5a72; letter-spacing: 0.5px; }
+.chat__form { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.chat__form .chat__label { flex-basis: 100%; }
 .chat__form input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 8px 10px; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); }
 .btn--send { width: 48px; padding: 0; font-size: 14px; }
 .chat__reset { align-self: flex-start; background: none; border: 0; color: #6a5a72; font-size: 14px; cursor: pointer; padding: 0; text-decoration: underline; }

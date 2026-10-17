@@ -1,9 +1,11 @@
 // The speech bubble above Navya's head and the Ask-Navya chat it opens.
+// Quick-question chips answer instantly from pre-written answers; questions the
+// visitor types go to Gemini (via /api/ask) and come back in Navya's voice.
 import { gsap } from 'gsap';
-import { fallbackAnswer } from './fallback.js';
+import { fallbackAnswer, CHIP_ANSWERS } from './fallback.js';
 
 const BUBBLE_LINES = ["Hi, I'm Navya! ✿", 'Ask me anything…', '(psst, I am the AI version)', 'Click me! ♡'];
-const COOLDOWN_MS = 2500;
+const COOLDOWN_MS = 4000;
 
 export function setupChat(home) {
   const bubble = document.getElementById('bubble');
@@ -16,7 +18,7 @@ export function setupChat(home) {
   const send = form.querySelector('button');
   let history = [];
   let busy = false;
-  let lastSend = 0;
+  let lastAsk = 0;
 
   let li = 0;
   setInterval(() => {
@@ -29,7 +31,7 @@ export function setupChat(home) {
     chat.hidden = false;
     bubble.setAttribute('aria-expanded', 'true');
     home.state.waveUntil = gsap.ticker.time + 1.6;
-    if (!log.children.length) addMessage('navya', "Hi! I'm AI-Navya ✿ Ask me about my projects, travels, desserts, or anything on this site.");
+    if (!log.children.length) addMessage('navya', "Hi! I'm AI-Navya ✿ Tap a quick question, or type your own and I'll answer it myself.");
     input.focus({ preventScroll: true });
   };
   const close = () => {
@@ -82,62 +84,80 @@ export function setupChat(home) {
     });
   }
 
-  async function ask(q) {
-    const question = q.trim().slice(0, 300);
-    if (!question || busy) return;
-    const wait = COOLDOWN_MS - (Date.now() - lastSend);
-    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+  async function reply(question, getAnswer) {
+    if (busy) return;
     busy = true;
-    lastSend = Date.now();
     send.disabled = true;
     addMessage('you', question);
     history.push({ role: 'user', text: question });
-    const typing = addMessage('navya', '• • •');
-    typing.classList.add('msg--typing');
+    const bubbleEl = addMessage('navya', '• • •');
+    bubbleEl.classList.add('msg--typing');
     home.state.thinking = true;
 
-    let reply;
-    let note;
-    try {
-      const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 14000);
-      const res = await fetch('/api/ask', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history.slice(-6) }),
-        signal: ctrl.signal,
-      });
-      clearTimeout(timer);
-      if (!res.ok) throw new Error(String(res.status));
-      reply = (await res.json()).reply;
-      if (!reply) throw new Error('empty');
-    } catch {
-      reply = fallbackAnswer(question);
-      note = '(AI-Navya is napping, so this is a pre-recorded answer ✿)';
-    }
+    const { text, note } = await getAnswer();
 
     home.state.thinking = false;
-    typing.classList.remove('msg--typing');
-    typing.textContent = '';
-    history.push({ role: 'model', text: reply });
-    await typeOut(typing, reply);
+    bubbleEl.classList.remove('msg--typing');
+    bubbleEl.textContent = '';
+    history.push({ role: 'model', text });
+    await typeOut(bubbleEl, text);
     if (note) {
       const s = document.createElement('small');
       s.textContent = note;
-      typing.append(s);
+      bubbleEl.append(s);
     }
     busy = false;
     send.disabled = false;
+  }
+
+  // a quick-question chip: instant, pre-written, no API call
+  function askChip(question) {
+    const answer = CHIP_ANSWERS[question] || fallbackAnswer(question);
+    return reply(question, async () => {
+      await new Promise((r) => setTimeout(r, 450));
+      return { text: answer };
+    });
+  }
+
+  // the visitor's own question: Gemini answers in Navya's voice
+  async function askOwn(q) {
+    const question = q.trim().slice(0, 300);
+    if (!question || busy) return;
+    const wait = COOLDOWN_MS - (Date.now() - lastAsk);
+    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+    lastAsk = Date.now();
+    return reply(question, async () => {
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 15000);
+        const res = await fetch('/api/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: history.slice(-6) }),
+          signal: ctrl.signal,
+        });
+        clearTimeout(timer);
+        if (res.status === 429) {
+          return { text: fallbackAnswer(question), note: '(Lots of people are asking me things right now, so this is a pre-recorded answer. Try again in a minute ✿)' };
+        }
+        if (!res.ok) throw new Error(String(res.status));
+        const { reply: text } = await res.json();
+        if (!text) throw new Error('empty');
+        return { text };
+      } catch {
+        return { text: fallbackAnswer(question), note: '(AI-Navya is napping, so this is a pre-recorded answer ✿)' };
+      }
+    });
   }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const q = input.value;
     input.value = '';
-    ask(q);
+    askOwn(q);
   });
   chips.addEventListener('click', (e) => {
     const b = e.target.closest('button');
-    if (b) ask(b.textContent);
+    if (b) askChip(b.textContent);
   });
 }

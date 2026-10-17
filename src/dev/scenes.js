@@ -63,3 +63,17 @@ if (q.get('og')) {
     document.title = 'saved';
   });
 }
+
+// /scenes.html?scene=london&p=0.9&w=1200&h=675&shot=london saves docs/screen-london.png for the README.
+if (q.get('shot')) {
+  setTimeout(async () => {
+    const cv = document.createElement('canvas');
+    cv.width = st.W * st.s;
+    cv.height = st.H * st.s;
+    const c = cv.getContext('2d');
+    c.imageSmoothingEnabled = false;
+    c.drawImage(st.canvas, 0, 0, cv.width, cv.height);
+    await fetch(`/__dev/save?name=screen-${q.get('shot')}.png`, { method: 'POST', body: cv.toDataURL('image/png') });
+    document.title = 'saved';
+  }, 1200);
+}
